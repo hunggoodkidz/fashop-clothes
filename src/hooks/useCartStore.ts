@@ -2,8 +2,14 @@ import { create } from "zustand";
 import { currentCart } from "@wix/ecom";
 import { WixClient } from "@/context/wixContext";
 
+interface PriceSummary {
+  subtotal?: {
+    amount: string;
+  };
+}
+
 type CartState = {
-  cart: currentCart.Cart;
+  cart: currentCart.Cart  & PriceSummary;
   isLoading: boolean;
   counter: number;
   getCart: (wixClient: WixClient) => void;
